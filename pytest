@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+echo 'running docker'
+docker run --rm \
+    -it \
+    -u "${UID}" \
+    -v $(pwd):/target \
+    -e HOME=/target \
+    -w /target \
+    pytest-bdd:latest pytest "$@"
